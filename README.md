@@ -24,3 +24,11 @@ TODO
 
 TODO
 
+## TODO
+This example should demonstrate:
+
+* custom code: add src folder with html.htl & html.pre.js
+* separate code and content: add helix-config.yaml
+* proxy strain
+
+
