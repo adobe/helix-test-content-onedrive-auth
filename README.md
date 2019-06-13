@@ -4,6 +4,8 @@ This advanced Helix example demonstrates the main programmable features of [Heli
 
 Other Helix example repositories are found at https://github.com/topics/helix-example
 
+Helix Pages publishes the content of this repository at https://helix-example-advanced-adobe.project-helix.page/ (TODO: might not work for advanced features).
+
 ## Status
 [![codecov](https://img.shields.io/codecov/c/github/adobe/helix-example-advanced.svg)](https://codecov.io/gh/adobe/helix-example-advanced)
 [![CircleCI](https://img.shields.io/circleci/project/github/adobe/helix-example-advanced.svg)](https://circleci.com/gh/adobe/helix-example-advanced)
