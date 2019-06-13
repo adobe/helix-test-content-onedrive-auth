@@ -1,6 +1,6 @@
 # Project Helix: Advanced Example
 
-> This advanced Helix example demonstrates the main programmable features of [Helix](https://www.project-helix.io/). 
+This advanced Helix example demonstrates the main programmable features of [Helix](https://www.project-helix.io/). 
 
 Other Helix example repositories are found at https://github.com/topics/helix-example
 
