@@ -12,6 +12,8 @@ Other Helix example repositories are found at https://github.com/topics/helix-ex
 [![LGTM Code Quality Grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/adobe/helix-example-advanced.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/adobe/helix-example-advanced)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release) [![Greenkeeper badge](https://badges.greenkeeper.io/adobe/helix-example-advanced.svg)](https://greenkeeper.io/)
 
+This is a **WORK IN PROGRESS** - empty so far, just a skeleton.
+
 ## Prerequisites
 
 TODO
