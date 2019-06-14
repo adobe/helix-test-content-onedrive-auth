@@ -18,7 +18,9 @@ This is a **WORK IN PROGRESS** - empty so far, just a skeleton.
 
 ## Prerequisites
 
-TODO
+For now this example does _not_ run on Helix Pages, it requires having your own an Adobe I/O Runtime namespace, access to a Fastly account etc. Please start with the http://github.com/adobe/helix-example-basic/ if you don't have access to that.
+
+TODO: point to the Getting Started guide
 
 ## Overview
 
