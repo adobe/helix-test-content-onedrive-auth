@@ -5,11 +5,11 @@ version: 1
 
 definitions:
   defaults:
-    - &localRepo "http://localhost/local/default.git"
+    - &defaultRepo "ssh://git@github.com/adobe/helix-example-advanced.git"
 
 strains:
   - name: default
-    url: http://localhost:3000/
-    code: *localRepo
-    content: *localRepo
-    static: *localRepo
+    code: ssh://git@github.com/adobe/helix-example-advanced.git#master
+    content: ssh://git@github.com/adobe/helix-example-advanced.git#master
+    static: ssh://git@github.com/adobe/helix-example-advanced.git/htdocs#master
+    package: bdelacre/github-com--adobe--helix-example-advanced--master-dirty
