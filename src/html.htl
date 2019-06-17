@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <title>${content.title}</title>
+    <link rel="stylesheet" href="/style.css"/>
+</head>
+<body>
+
+${content.document.body.innerHTML}
+
+<hr>
+<em>Helix generated this on ${content.time}</em>
+<br/>
+<em>This is more than random: ${content.random}</em>
+
+</body>
+</html>
