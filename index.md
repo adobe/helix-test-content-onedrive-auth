@@ -1,4 +1,8 @@
-helix-example-advanced
-----
+![helix-logo](./images/helix_logo.png) <!-- this image is served from this content repository -->
 
-This is just a skeleton index page so that the website shows up at https://helix-example-advanced-adobe.project-helix.page/
+# Helix - advanced example
+
+This Helix example demonstrates advanced features including TODO.
+
+After committing and pushing your changes to GitHub, use `hlx deploy` to deploy
+the publishing code and `hlx publish` to publish the content.

@@ -1,0 +1,14 @@
+#
+# helix configuration for local development
+#
+version: 1
+
+definitions:
+  defaults:
+    - &defaultRepo "ssh://git@github.com/adobe/helix-example-advanced.git"
+
+strains:
+  - name: default
+    code: *defaultRepo
+    content: *defaultRepo
+    static: *defaultRepo
