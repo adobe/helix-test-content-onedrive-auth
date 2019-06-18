@@ -8,6 +8,8 @@
 [![LGTM Code Quality Grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/adobe/helix-example-advanced.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/adobe/helix-example-advanced)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release) [![Greenkeeper badge](https://badges.greenkeeper.io/adobe/helix-example-advanced.svg)](https://greenkeeper.io/)
 
+## Overview
+
 This is a **WORK IN PROGRESS** - mostly a skeleton so far.
 
 This advanced Helix example demonstrates the main programmable features of [Helix](https://www.project-helix.io/). 
@@ -31,8 +33,6 @@ For now, you'll need to fork this repository for publishing, as `hlx deploy` mod
 the `helix-config.yaml` file to point to your deployed code on Adobe I/O Runtime, and 
 you need to commit those changes for the Helix services to find that code.
 
-## Overview
-
 TODO
 
 ## TODO
@@ -42,5 +42,12 @@ This example should demonstrate:
 * separate code and content: add helix-config.yaml
 * proxy strain
 
+## Automated tests
+The tests, executed by `npm install ; npm test` as well as
+by [CircleCI](https://circleci.com/gh/adobe/helix-example-advanced) upon
+repository changes, validate the output of the published website.
 
+See the TODO in the test code, for now the deployment has to happen manually
+before running the tests, so we'll often get failures when the tests run
+before the deployment and publishing is done.
 	
