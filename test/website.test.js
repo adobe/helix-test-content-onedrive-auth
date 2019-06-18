@@ -76,7 +76,7 @@ describe(`Test the published website from ${testURL}`, () => {
 
   it('Contains the expected image elements', () => {
     [
-      '/images/helix_logo.png'
+      './images/helix_logo.png'
     ].forEach((src) => {
       const pattern = `img[src="${src}"]`;
       assert(
