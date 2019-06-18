@@ -12,7 +12,7 @@
 ${content.document.body.innerHTML}
 
 <hr>
-<em>Helix generated this on ${content.time}</em>
+<em>Helix has generated this on ${content.time}</em>
 <br/>
 <em>This is more than random: ${content.random}</em>
 
