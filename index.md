@@ -4,4 +4,4 @@
 
 This Helix example demonstrates advanced features including TODO.
 
-See the `README` of this module for publishing instructions.
+See the [README](README.html) of this module for publishing instructions.
