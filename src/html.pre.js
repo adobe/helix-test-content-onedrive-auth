@@ -4,6 +4,7 @@
  * @param context.content The content
  */
 function pre(context) {
+  content.context.fromPreJS = "This comes from pre.js";
   context.content.time = `${new Date()}`;
   context.content.random = `${43 + Math.random()}`;
 }

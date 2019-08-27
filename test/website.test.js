@@ -53,6 +53,7 @@ describe(`Test the published website from ${testURL}`, () => {
     assert.equal(expectedTitle, content.$('h1:first').text());
   });
 
+
   it('Contains the expected body texts', () => {
     [
       'This Helix example demonstrates advanced features'
@@ -62,6 +63,13 @@ describe(`Test the published website from ${testURL}`, () => {
         `Expecting '${text})' to be found in the page content`,
       );
     });
+  });
+
+  it('Contains the expected pre.js content', () => {
+    const expected = 'This comes from pre.js';
+    assert(
+      content.$('body').text().indexOf(expected) > 0),
+      'Expecting the pre.js content to be found in the page content'
   });
 
   it('Contains the expected links', () => {
