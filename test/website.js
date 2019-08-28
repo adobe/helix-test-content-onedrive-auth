@@ -21,7 +21,8 @@ class Website {
   }
 
   getContent(path, callback) {
-    const fullUrl = `${this.url}${path}?cacheKiller=${Math.random()}`;
+    const random = Math.random();
+    const fullUrl = `${this.url}${path}?cacheKiller${random}=killit`;
     request(fullUrl, async (err, res, body) => {
       assert(!err);
       assert.equal(res.statusCode, 200);
