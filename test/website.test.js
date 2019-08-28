@@ -16,13 +16,7 @@
 const assert = require('assert');
 const { getHeader, assertHeader } = require('./testutils');
 const Website = require('./website');
-
-const HTTP_REQUEST_TIMEOUT_MSEC = 10000;
-
-// TODO for now this require manually deploying the content at this URL,
-// we should deploy it automatically (with the Helix bot?)
-// https://github.com/adobe/helix-example-advanced/issues/3
-const testURL = 'https://bertrand.helix-demo.xyz';
+const config = require('./config');
 
 // TODO we should first wait for the website output to be
 // updated - include the Git revision hash in a response header
@@ -32,14 +26,13 @@ const testURL = 'https://bertrand.helix-demo.xyz';
 // duration of the tests.
 // https://github.com/adobe/helix-example-advanced/issues/3
 
-describe(`Test the published website from ${testURL}`, () => {
+describe(`Test the published website from ${config.siteURL}`, () => {
   const response = {};
-  const site = new Website(testURL);
+  const site = new Website(config.siteURL);
 
-  // "function" is needed for "this", to set timeout
   // eslint-disable-next-line func-names
   before(function (done) {
-    this.timeout(HTTP_REQUEST_TIMEOUT_MSEC);
+    this.timeout(config.httpRequestTimeoutMsec);
     site.getContent('/', (resp) => {
       Object.assign(response, resp);
       done();

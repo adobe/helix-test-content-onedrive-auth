@@ -16,20 +16,15 @@
 const assert = require('assert');
 const { assertHeader } = require('./testutils');
 const Website = require('./website');
+const config = require('./config');
 
-const HTTP_REQUEST_TIMEOUT_MSEC = 10000;
-
-// See TODOs in website.test.js - they also apply here
-const testURL = `https://bertrand.helix-demo.xyz`;
-
-describe(`Test the static content ${testURL}`, () => {
+describe(`Test the static content ${config.siteURL}`, () => {
   const response = {};
-  const site = new Website(testURL);
+  const site = new Website(config.siteURL);
 
-  // "function" is needed for "this", to set timeout
   // eslint-disable-next-line func-names
   before(function (done) {
-    this.timeout(HTTP_REQUEST_TIMEOUT_MSEC);
+    this.timeout(config.httpRequestTimeoutMsec);
     site.getContent('/static.html', (resp) => {
       Object.assign(response, resp);
       done();
