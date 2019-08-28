@@ -17,13 +17,16 @@ const assert = require('assert');
 const request = require('request');
 const jquery = require('jquery');
 const { JSDOM } = require('jsdom');
+const { getHeader, assertHeader } = require('./testutils');
 
 const HTTP_REQUEST_TIMEOUT_MSEC = 10000;
 
 // TODO for now this require manually deploying the content at this URL,
 // we should deploy it automatically (with the Helix bot?)
 // https://github.com/adobe/helix-example-advanced/issues/3
-const testURL = `https://bertrand.helix-demo.xyz/?cacheKiller=${Math.random()}`;
+//const testURL = `https://bertrand.helix-demo.xyz/?cacheKiller=${Math.random()}`;
+
+const testURL = 'http://localhost:3000';
 
 // TODO we should first wait for the website output to be
 // updated - include the Git revision hash in a response header
@@ -34,7 +37,7 @@ const testURL = `https://bertrand.helix-demo.xyz/?cacheKiller=${Math.random()}`;
 // https://github.com/adobe/helix-example-advanced/issues/3
 
 describe(`Test the published website from ${testURL}`, () => {
-  const content = {};
+  const response = {};
 
   // "function" is needed for "this", to set timeout
   // eslint-disable-next-line func-names
@@ -43,14 +46,15 @@ describe(`Test the published website from ${testURL}`, () => {
     request(testURL, async (err, res, body) => {
       assert(!err);
       assert.equal(res.statusCode, 200);
-      content.$ = jquery(new JSDOM(body).window);
+      response.$ = jquery(new JSDOM(body).window);
+      response.headers = res.headers;
       done();
     });
   });
 
   it('Contains the page title', () => {
     const expectedTitle = 'Helix - advanced example';
-    assert.equal(expectedTitle, content.$('h1:first').text());
+    assert.equal(expectedTitle, response.$('h1:first').text());
   });
 
 
@@ -59,7 +63,7 @@ describe(`Test the published website from ${testURL}`, () => {
       'This Helix example demonstrates advanced features'
     ].forEach((text) => {
       assert(
-        content.$('body').text().indexOf(text) > 0,
+        response.$('body').text().indexOf(text) > 0,
         `Expecting '${text})' to be found in the page content`,
       );
     });
@@ -68,7 +72,7 @@ describe(`Test the published website from ${testURL}`, () => {
   it('Contains the expected pre.js content', () => {
     const expected = 'This comes from pre.js';
     assert(
-      content.$('body').text().indexOf(expected) > 0),
+      response.$('body').text().indexOf(expected) > 0),
       'Expecting the pre.js content to be found in the page content'
   });
 
@@ -78,7 +82,7 @@ describe(`Test the published website from ${testURL}`, () => {
     ].forEach((href) => {
       const pattern = `a[href="${href}"]`;
       assert(
-        content.$(pattern).length > 0,
+        response.$(pattern).length > 0,
         `Expecting '${pattern}' to be found`,
       );
     });
@@ -90,9 +94,14 @@ describe(`Test the published website from ${testURL}`, () => {
     ].forEach((src) => {
       const pattern = `img[src="${src}"]`;
       assert(
-        content.$(pattern).length > 0,
+        response.$(pattern).length > 0,
         `Expecting '${pattern}' to be found`,
       );
     });
+  });
+
+  it('Contains the expected ESI hook headers', () => {
+    assertHeader(response.headers, 'X-marker-before', /esi\/[0-9]+/);
+    assertHeader(response.headers, 'X-marker-after', /esi\/[0-9]+/);
   });
 });

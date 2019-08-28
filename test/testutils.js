@@ -10,25 +10,17 @@
  * governing permissions and limitations under the License.
  */
 
-var counter = 0;
+const assert = require('assert');
 
- // pre can be used to compute dynamic content properties
- module.exports.pre = context => {
-  context.content.fromPreJS = "This comes from pre.js";
-  context.content.time = `${new Date()}`;
-  context.content.random = `${43 + Math.random()}`;
+module.exports.getHeader = (headers, inputName) => {
+  const lowerName = inputName.toLowerCase();
+  const key = Object.keys(headers).find(k => k.toLowerCase() == lowerName);
+  return key ? headers[key] : undefined;
+};
+
+module.exports.assertHeader = (headers, name, regexp) => {
+  const value = module.exports.getHeader(headers, name);
+  assert(value, `Expecting a '${name}' header`);
+  assert(value.match(regexp),`Expecting '${name}' header to match ${regexp}, got ${value}`);
 }
 
-// demonstrate hooking the before ESI pipeline stage
-module.exports.before = {
-  esi: (context) => {
-    context.response.headers['X-marker-before'] = `esi/${counter++}`;
-  }
-}
-
-// demonstrate hooking the after ESI pipeline stage
-module.exports.after = {
-  esi: (context) => {
-    context.response.headers['X-marker-after'] = `esi/${counter++}`;
-  }
-}

@@ -15,17 +15,12 @@
 
 const assert = require('assert');
 const request = require('request');
+const { assertHeader } = require('./testutils');
 
 const HTTP_REQUEST_TIMEOUT_MSEC = 10000;
 
 // See TODOs in website.test.js - they also apply here
 const testURL = `https://bertrand.helix-demo.xyz/static.html?cacheKiller=${Math.random()}`;
-
-const getHeader = (headers, inputKey) => {
-  const lowerKey = inputKey.toLowerCase();
-  const key = Object.keys(headers).find(k => k.toLowerCase() == lowerKey);
-  return key ? headers[key] : undefined;
-};
 
 describe(`Test the static content ${testURL}`, () => {
   const response = {};
@@ -48,11 +43,8 @@ describe(`Test the static content ${testURL}`, () => {
   });
 
   it('Has the correct Content-Type', () => {
-    // TODO should be text/html
-    const expected = 'application/octet-stream';
-    const header = 'Content-Type'
-    const contentType = getHeader(response.headers, header);
-    assert(contentType, `Expecting a ${header} header`);
-    assert(contentType.startsWith(expected));
+    // TODO should be text/html but for now we get this
+    const expected = /application\/octet-stream.*/;
+    assertHeader(response.headers, 'Content-Type', expected);
   });
 });
