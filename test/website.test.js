@@ -24,9 +24,7 @@ const HTTP_REQUEST_TIMEOUT_MSEC = 10000;
 // TODO for now this require manually deploying the content at this URL,
 // we should deploy it automatically (with the Helix bot?)
 // https://github.com/adobe/helix-example-advanced/issues/3
-//const testURL = `https://bertrand.helix-demo.xyz/?cacheKiller=${Math.random()}`;
-
-const testURL = 'http://localhost:3000';
+const testURL = `https://bertrand.helix-demo.xyz/?cacheKiller=${Math.random()}`;
 
 // TODO we should first wait for the website output to be
 // updated - include the Git revision hash in a response header

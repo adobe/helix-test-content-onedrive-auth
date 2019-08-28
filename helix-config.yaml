@@ -12,4 +12,4 @@ strains:
     code: ssh://git@github.com/adobe/helix-example-advanced.git#master
     content: ssh://git@github.com/adobe/helix-example-advanced.git#master
     static: ssh://git@github.com/adobe/helix-example-advanced.git/htdocs#master
-    package: bdelacre/e2bb559e4414e874141e8f1f389fbcf9d9cacae9
+    package: bdelacre/610bc61bdcd6ad2ec30a8c60645bb424b1b4fe71
