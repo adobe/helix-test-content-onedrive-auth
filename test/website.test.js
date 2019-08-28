@@ -14,17 +14,15 @@
 /* eslint-disable no-undef */
 
 const assert = require('assert');
-const request = require('request');
-const jquery = require('jquery');
-const { JSDOM } = require('jsdom');
 const { getHeader, assertHeader } = require('./testutils');
+const Website = require('./website');
 
 const HTTP_REQUEST_TIMEOUT_MSEC = 10000;
 
 // TODO for now this require manually deploying the content at this URL,
 // we should deploy it automatically (with the Helix bot?)
 // https://github.com/adobe/helix-example-advanced/issues/3
-const testURL = `https://bertrand.helix-demo.xyz/?cacheKiller=${Math.random()}`;
+const testURL = 'https://bertrand.helix-demo.xyz';
 
 // TODO we should first wait for the website output to be
 // updated - include the Git revision hash in a response header
@@ -36,16 +34,14 @@ const testURL = `https://bertrand.helix-demo.xyz/?cacheKiller=${Math.random()}`;
 
 describe(`Test the published website from ${testURL}`, () => {
   const response = {};
+  const site = new Website(testURL);
 
   // "function" is needed for "this", to set timeout
   // eslint-disable-next-line func-names
   before(function (done) {
     this.timeout(HTTP_REQUEST_TIMEOUT_MSEC);
-    request(testURL, async (err, res, body) => {
-      assert(!err);
-      assert.equal(res.statusCode, 200);
-      response.$ = jquery(new JSDOM(body).window);
-      response.headers = res.headers;
+    site.getContent('/', (resp) => {
+      Object.assign(response, resp);
       done();
     });
   });

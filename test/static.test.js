@@ -14,26 +14,24 @@
 /* eslint-disable no-undef */
 
 const assert = require('assert');
-const request = require('request');
 const { assertHeader } = require('./testutils');
+const Website = require('./website');
 
 const HTTP_REQUEST_TIMEOUT_MSEC = 10000;
 
 // See TODOs in website.test.js - they also apply here
-const testURL = `https://bertrand.helix-demo.xyz/static.html?cacheKiller=${Math.random()}`;
+const testURL = `https://bertrand.helix-demo.xyz`;
 
 describe(`Test the static content ${testURL}`, () => {
   const response = {};
+  const site = new Website(testURL);
 
   // "function" is needed for "this", to set timeout
   // eslint-disable-next-line func-names
   before(function (done) {
     this.timeout(HTTP_REQUEST_TIMEOUT_MSEC);
-    request(testURL, async (err, res, body) => {
-      assert(!err);
-      assert.equal(res.statusCode, 200);
-      response.raw = body;
-      response.headers = res.headers;
+    site.getContent('/static.html', (resp) => {
+      Object.assign(response, resp);
       done();
     });
   });
