@@ -20,12 +20,15 @@ class Website {
     this.url = siteUrl;
   }
 
-  getContent(path, callback) {
+  getContent(opt, callback) {
+    const path = opt.path ? opt.path : opt;
     const random = Math.random();
-    const fullUrl = `${this.url}${path}?cacheKiller${random}=killit`;
+    const cacheKiller = opt.noCacheKiller ? '' : `?cacheKiller${random}=killit`;
+    const fullUrl = `${this.url}${path}${cacheKiller}`;
     request(fullUrl, async (err, res, body) => {
       assert(!err);
-      assert.equal(res.statusCode, 200);
+      const expectStatus = 200;
+      assert(res.statusCode == expectStatus, `Expected status ${expectStatus}, got ${res.statusCode} at ${fullUrl}`);
       const response = {};
       response.raw = body;
       response.$ = jquery(new JSDOM(body).window);

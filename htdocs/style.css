@@ -13,6 +13,11 @@ body {
     background-color: beige;
 }
 
+.overrideMarker42 {
+    /* This is only used to recognize this stylesheet */
+    color:red;
+}
+
 h1,h2,h3,h4 {
     border-bottom:solid 1px grey;
 }
