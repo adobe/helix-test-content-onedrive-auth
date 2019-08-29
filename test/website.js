@@ -22,8 +22,11 @@ class Website {
 
   getContent(opt, callback) {
     const path = opt.path ? opt.path : opt;
-    const random = Math.random();
-    const cacheKiller = opt.noCacheKiller ? '' : `?cacheKiller${random}=killit`;
+    let cacheKiller = '';
+    if(!opt.noCacheKiller) {
+      const random = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
+      cacheKiller = `?cacheKiller_${random}=killit`;
+    }
     const fullUrl = `${this.url}${path}${cacheKiller}`;
     request(fullUrl, async (err, res, body) => {
       assert(!err);

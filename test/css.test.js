@@ -18,7 +18,6 @@ const Website = require('./website');
 const config = require('./config');
 
 describe(`Test the overridden CSS from ${config.siteURL}`, () => {
-  const response = {};
   const site = new Website(config.siteURL);
 
   // eslint-disable-next-line func-names
