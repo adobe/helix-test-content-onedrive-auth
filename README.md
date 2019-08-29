@@ -10,9 +10,8 @@
 
 ## Overview
 
-This is a **WORK IN PROGRESS** - mostly a skeleton so far.
-
-This advanced Helix example demonstrates the main programmable features of [Helix](https://www.project-helix.io/). 
+This advanced Helix example demonstrates the main programmable features of [Helix](https://www.project-helix.io/) and 
+includes integration tests for them.
 
 Other Helix example repositories are found at https://github.com/topics/helix-example
 
@@ -21,26 +20,15 @@ Other Helix example repositories are found at https://github.com/topics/helix-ex
 This example is _not_ meant to be published with Helix Pages, it is meant for "full Helix"
 users that want to use custom publishing code, VCL extensions etc.
 
-This means that you need Adobe I/O Runtime and Fastly credentials to publish this example.
-
-TODO: point to the Getting Started guide
+This means that you need Adobe I/O Runtime and Fastly credentials to publish this example, as described below.
 
 ## Publishing this example
 To publish this repository use the `hlx clean`, `hlx build`, `hlx package` and 
-`hlx deploy` commands described in the [hlx command documentation](https://www.project-helix.io/client/README.html). 
+`hlx deploy` commands described in the [Helix command line documentation](https://www.project-helix.io/client/README.html). 
 
 For now, you'll need to fork this repository for publishing, as `hlx deploy` modifies
 the `helix-config.yaml` file to point to your deployed code on Adobe I/O Runtime, and 
 you need to commit those changes for the Helix services to find that code.
-
-TODO
-
-## TODO
-This example should demonstrate:
-
-* custom code: add src folder with html.htl & html.pre.js
-* separate code and content: add helix-config.yaml
-* proxy strain
 
 ## Automated tests
 The tests, executed by `npm install ; npm test` as well as
