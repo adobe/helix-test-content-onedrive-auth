@@ -7,16 +7,24 @@
     <title>${content.title}</title>
     <link rel="stylesheet" href="/style.css"/>
 </head>
-<body>
+<body data-sly-use.lib="./templates/library.html">
 
 ${content.document.body.innerHTML}
 
 <hr>
-<em>Helix generated this on:${content.time}</em>
+<em>Helix generated this on:${content.data.time}</em>
 <br/>
-<em>This is random: ${content.random}</em>
+<em>This is random: ${content.data.random}</em>
 <br/>
-<em>This is dynamically generated: ${content.fromPreJS}</em>
+<em>This is dynamically generated: ${content.data.fromPreJS}</em>
+<br/>
+<div>
+    <!--/* call the lib.button template and pass in the button text */-->
+    Click here to <span data-sly-call="${lib.button @ text='Win big pizza!'}"></span>
+</div>
+<hr>
+See our <sly data-sly-call="${lib.link @ text='documentation', href=content.data.homepage}"></sly>
+for more information.
 
 </body>
 </html>
