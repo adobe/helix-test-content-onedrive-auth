@@ -26,5 +26,14 @@ ${content.document.body.innerHTML}
 See our <sly data-sly-call="${lib.link @ text='documentation', href=content.data.homepage}"></sly>
 for more information.
 
+<hr>
+<!--/* example of how to use "use" classes */-->
+<h3 data-sly-use.unknown="${'./planet.js'}">${unknown.title}</h3>
+<h3 data-sly-use.jupiter="${'./planet.js' @ jcr:title='Jupiter', value1='Moon', value2='Europa', radius='70000'}">
+    ${jupiter.title}
+</h3>
+<p>${jupiter.subTitle}</p>
+<p>Surface Area: ${jupiter.area}</p>
+
 </body>
 </html>
