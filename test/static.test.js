@@ -36,8 +36,7 @@ describe(`Test the static content ${config.siteURL}`, () => {
   });
 
   it('Has the correct Content-Type', () => {
-    // TODO should be text/html but for now we get this
-    const expected = /application\/octet-stream.*/;
+    const expected = /text\/html.*/;
     assertHeader(response.headers, 'Content-Type', expected);
   });
 });
