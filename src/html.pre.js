@@ -10,25 +10,28 @@
  * governing permissions and limitations under the License.
  */
 
-var counter = 0;
+let counter = 0;
 
- // pre can be used to compute dynamic content properties
- module.exports.pre = context => {
-  context.content.fromPreJS = "This comes from pre.js";
-  context.content.time = `${new Date()}`;
-  context.content.random = `${43 + Math.random()}`;
-}
+// pre can be used to compute dynamic content properties
+module.exports.pre = context => {
+  context.content.data = {
+    fromPreJS: "This comes from pre.js",
+    time: `${new Date()}`,
+    random: `${43 + Math.random()}`,
+    homepage: 'https://www.project-helix.io/',
+  }
+};
 
 // demonstrate hooking the before ESI pipeline stage
 module.exports.before = {
   esi: (context) => {
     context.response.headers['X-marker-before'] = `esi/${counter++}`;
-  }
-}
+  },
+};
 
 // demonstrate hooking the after ESI pipeline stage
 module.exports.after = {
   esi: (context) => {
     context.response.headers['X-marker-after'] = `esi/${counter++}`;
-  }
-}
+  },
+};

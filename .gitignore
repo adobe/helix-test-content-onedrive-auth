@@ -8,3 +8,4 @@ logs
 test-results.xml
 .hlx
 helix-config.yaml.old
+.env
