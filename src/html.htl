@@ -18,15 +18,13 @@ ${content.document.body.innerHTML}
 <br/>
 <em>This is dynamically generated: ${content.data.fromPreJS}</em>
 <br/>
+
+<h2>HTL-generated content</h2>
 <div>
     <!--/* call the lib.button template and pass in the button text */-->
     Click here to <span data-sly-call="${lib.button @ text='Win big pizza!'}"></span>
 </div>
-<hr>
-See our <sly data-sly-call="${lib.link @ text='documentation', href=content.data.homepage}"></sly>
-for more information.
 
-<hr>
 <!--/* example of how to use "use" classes */-->
 <h3 data-sly-use.unknown="${'./planet.js'}">${unknown.title}</h3>
 <h3 data-sly-use.jupiter="${'./planet.js' @ jcr:title='Jupiter', value1='Moon', value2='Europa', radius='70000'}">
@@ -34,6 +32,10 @@ for more information.
 </h3>
 <p>${jupiter.subTitle}</p>
 <p>Surface Area: ${jupiter.area}</p>
+
+<hr>
+See our <sly data-sly-call="${lib.link @ text='documentation', href=content.data.homepage}"></sly>
+for more information.
 
 </body>
 </html>
