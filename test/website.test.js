@@ -64,11 +64,22 @@ describe(`Test the published website from ${config.siteURL}`, () => {
   });
 
   it('Contains the expected planet.js content', () => {
-    const regexp = /Surface Area.*61575/;
+    const jupiterRegexp = /Surface Area.*61575/;
     assert(
-      response.$('body').text().match(regexp),
-      'Expecting the planet.js regexp (' + regexp + ' to match the page content'
-  )});
+      response.$('body').text().match(jupiterRegexp),
+      'Expecting the planet.js regexp (' + jupiterRegexp + ' to match the page content'
+    )
+
+    const untitledPattern = 'h3:contains("Untitled")';
+    assert(
+      response.$(untitledPattern).length == 1,
+      `Expecting one ${untitledPattern} to be found`
+    )
+    assert(
+      response.$(untitledPattern).text() == 'Untitled',
+      `Expecting the text of ${untitledPattern} to match`
+    )
+  });
 
   it('Contains the expected pizza button', () => {
     const pattern = 'button';
