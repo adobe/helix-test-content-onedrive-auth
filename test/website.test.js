@@ -63,6 +63,25 @@ describe(`Test the published website from ${config.siteURL}`, () => {
       'Expecting the pre.js content to be found in the page content'
   });
 
+  it('Contains the expected planet.js content', () => {
+    const regexp = /Surface Area.*61575/;
+    assert(
+      response.$('body').text().match(regexp),
+      'Expecting the planet.js regexp (' + regexp + ' to match the page content'
+  )});
+
+  it('Contains the expected pizza button', () => {
+    const pattern = 'button';
+    assert(
+      response.$(pattern).length == 1,
+      `Expecting one ${pattern} to be found`
+    );
+    const regexp = /win big pizza/i;
+    assert(
+      response.$(pattern).text().match(regexp),
+      'Expecting the HTL-generated pizza button to be found in the page content'
+  )});
+
   it('Contains the expected links', () => {
     [
       'README.html'
