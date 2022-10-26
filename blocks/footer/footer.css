@@ -1,0 +1,22 @@
+footer {
+  display: none;
+  padding: 2rem;
+  font-size: var(--type-body-s-size);
+}
+
+footer .footer {
+  max-width: 768px;
+  margin: auto;
+}
+
+footer .footer p {
+  margin: 0;
+}
+
+footer .footer a:any-link {
+  color: currentcolor;
+}
+
+footer.appear {
+  display: block;
+}
